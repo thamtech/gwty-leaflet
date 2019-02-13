@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.gwidgets</groupId>
+	<groupId>com.thamtech.gwt</groupId>
 	<artifactId>gwty-leaflet</artifactId>
-	<version>1.0</version>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>gwt-lib</packaging>
 
 	<properties>
@@ -11,6 +11,11 @@
 		<elementalVersion>1.0.0-RC1</elementalVersion>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
+    <plugin.version.gwt.maven>1.0-rc-8</plugin.version.gwt.maven>
+    <plugin.version.maven.gpg>1.6</plugin.version.maven.gpg>
+    <plugin.version.maven.javadoc>3.0.0-M1</plugin.version.maven.javadoc>
+    <plugin.version.maven.nexus.staging>1.6.8</plugin.version.maven.nexus.staging>
+    <plugin.version.maven.source>3.0.1</plugin.version.maven.source>
 	</properties>
 
 	<developers>
@@ -20,6 +25,11 @@
 			<email>zakaria.amine88@gmail.com</email>
 			<organization>G-Widgets</organization>
 		</developer>
+    <developer>
+      <name>Tyler Ham</name>
+      <email>tyler@thamtech.com</email>
+      <organization>Thamtech, LLC</organization>
+    </developer>
 	</developers>
 
 	<licenses>
@@ -30,10 +40,15 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:git@github.com:zak905/gwty-leaflet.git</connection>
+		<connection>scm:git:https://github.com/thamtech/gwty-leaflet</connection>
 		<developerConnection>scm:git:git@github.com:zak905/gwty-leaflet.git</developerConnection>
-		<url>git@github.com:zak905/gwty-leaflet.git</url>
+		<url>https://github.com/thamtech/gwty-leaflet</url>
 	</scm>
+
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/thamtech/gwty-leaflet/issues</url>
+  </issueManagement>
 
 	<dependencies>
      <dependency>
@@ -82,12 +97,39 @@
 			<plugin>
 				<groupId>net.ltgt.gwt.maven</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
-				<version>1.0-rc-6</version>
+        <version>${plugin.version.gwt.maven}</version>
 				<extensions>true</extensions>
 				<configuration>
 					<moduleName>com.gwidgets.api.GwtyLeaflet</moduleName>
 				</configuration>
 			</plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>${plugin.version.maven.source}</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${plugin.version.maven.javadoc}</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -100,8 +142,8 @@
 	<description>a JsInterop wrapper for the Leaflet js library</description>
 
 	<organization>
-		<name>G-Widgets</name>
-		<url>http://www.g-widgets.com/</url>
+		<name>Thamtech</name>
+		<url>https://thamtech.com/</url>
 	</organization>
 
 	<distributionManagement>
@@ -118,7 +160,37 @@
 	<profiles>
 		<profile>
 			<id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugin</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>${plugin.version.maven.gpg}</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>${plugin.version.maven.nexus.staging}</version>
+            <extensions>true</extensions>
+            <configuration>
+              <serverId>ossrh</serverId>
+              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+              <autoReleaseAfterClose>true</autoReleaseAfterClose>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
 		</profile>
 	</profiles>
-	<url>https://github.com/gwidgets/gwty-leaflet</url>
+	<url>https://github.com/thamtech/gwty-leaflet</url>
 </project>

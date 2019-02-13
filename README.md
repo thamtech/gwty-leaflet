@@ -1,6 +1,10 @@
-[![Build Status](https://travis-ci.org/gwidgets/gwty-leaflet.svg?branch=master)](https://travis-ci.org/gwidgets/gwty-leaflet)
+Forked from [gwidgets/gwty-leaflet](https://github.com/gwidgets/gwty-leaflet)
+for continued maintenance and development due to the parent project being
+archived.
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.gwidgets/gwty-leaflet/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.gwidgets/gwty-leaflet)
+[![Build Status](https://travis-ci.org/thamtech/gwty-leaflet.svg?branch=master)](https://travis-ci.org/thamtech/gwty-leaflet)
+
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.thamtech.gwt/gwty-leaflet/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.thamtech.gwt/gwty-leaflet)
 ## Overview
 
 gwty-leaflet is wrapper for the famous maps javascript library [Leaflet](http://leafletjs.com/). gwty-leaflet is based on JsInterop and allows using Leaflet from your GWT application exactly the same way as from a javascript script with a slight advantage: static typing. It was partially generated automatically from Leaflet docs.
@@ -11,7 +15,7 @@ gwty-leaflet is wrapper for the famous maps javascript library [Leaflet](http://
 
 ```xml
                      <dependency>
-                        <groupId>com.gwidgets</groupId>
+                        <groupId>com.thamtech.gwt</groupId>
                         <artifactId>gwty-leaflet</artifactId>
                         <version>{version}</version>
                      </dependency>
