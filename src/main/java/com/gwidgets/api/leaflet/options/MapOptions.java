@@ -556,6 +556,8 @@ public class MapOptions {
 		
 		Layer[] layers;
 
+		CRS crs;
+
 		Double maxZoom;
 
 		LatLngBounds maxBounds;
@@ -631,6 +633,18 @@ public class MapOptions {
 		 */
 		public Builder layers(Layer[] layers) {
 			this.layers = layers;
+			return this;
+		}
+
+		/**
+		 * The Coordinate Reference System to use
+		 *  default null
+		 *
+		 * @param crs the coordinate reference system
+		 * @return the builder
+		 */
+		public Builder crs(CRS crs) {
+			this.crs = crs;
 			return this;
 		}
 
@@ -1030,6 +1044,8 @@ public class MapOptions {
 		public MapOptions build() {
 
 			MapOptions options = new MapOptions();
+			if(this.crs != null)
+			options.crs = this.crs;
 			if(this.center != null)
 			options.center = this.center;
 			if(this.zoom != null)

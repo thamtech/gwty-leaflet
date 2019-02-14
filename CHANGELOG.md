@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org).
 
 ### Added
 * `setMinZoom` and `setMaxZoom` methods on `Map`
+* `crs` method to set Coordinate Reference System in `MapOptions.Builder`
 
 
 [1.0.0] - 2019-02-13
