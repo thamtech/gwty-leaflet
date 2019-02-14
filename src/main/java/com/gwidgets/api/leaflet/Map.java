@@ -107,6 +107,24 @@ public class Map implements Evented {
 	public native L setZoom(double zoom, ZoomOptions options);
 
 	/**
+	 * Sets the lower limit for the available zoom levels.
+	 *
+	 * @param zoom the minimum zoom level
+	 * @return the L class
+	 */
+	@JsMethod
+	public native L setMinZoom(double zoom);
+
+	/**
+	 * Sets the upper limit for the available zoom levels.
+	 *
+	 * @param zoom the minimum zoom level
+	 * @return the L class
+	 */
+	@JsMethod
+	public native L setMaxZoom(double zoom);
+
+	/**
 	 * Increases the zoom of the map by delta (1 by default).
 	 *
 	 * @param delta the delta

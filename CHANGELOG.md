@@ -7,6 +7,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org).
 
 
+[unreleased]
+------------
+
+### Added
+* `setMinZoom` and `setMaxZoom` methods on `Map`
+
+
 [1.0.0] - 2019-02-13
 --------------------
 
